@@ -3,4 +3,4 @@
 
 Nathan Gaskill (Chief Engineer - ANS Group)
 
-This repository contains sample JavaScript Lambda function used in the ANS - AWS Loft (London) Presentation.
+This repository contains sample JavaScript Lambda function used in the ANS - AWS Loft (London - 26th September 2017) Presentation.
