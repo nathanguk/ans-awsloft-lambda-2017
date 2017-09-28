@@ -18,6 +18,7 @@ exports.handler = function (event, context, callback) {
                     Resources: resources,
                     Tags: tags
                 };
+            };
             ec2.createTags(tagparrams, function(err, data) {
                 if (err) {
                     console.log('Tag Error: ', err);
@@ -32,6 +33,7 @@ exports.handler = function (event, context, callback) {
                 var tagparrams = {
                     Resources: resources
                 };
+            };
             ec2.deleteTags(tagparrams, function(err, data) {
                 if (err) {
                     console.log('Tag Error: ', err);
