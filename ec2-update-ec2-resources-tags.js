@@ -12,7 +12,7 @@ exports.handler = function (event, context, callback) {
 
     // Function to apply tags to resources
     function applytags(tags,resources){
-        if(tags.Length > 0){
+        if(tags.length > 0){
             var tagparrams = {
                 Resources: resources,
                 Tags: tags
