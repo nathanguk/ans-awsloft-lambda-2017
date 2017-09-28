@@ -58,8 +58,6 @@ exports.handler = function (event, context, callback) {
                     console.log(ec2instance.InstanceId);
 
                     // Get Instance Tags
-                    if(ec2instance.Tags.Length > 0){
-                   
                         var ec2instanceTags = ec2instance.Tags;
                         
                         // Get Block device mappings
@@ -103,7 +101,6 @@ exports.handler = function (event, context, callback) {
                             // Applying EC2 Instance Tags to ENI
                             applytags(ec2instanceTags,[ec2eni.NetworkInterfaceId]);   
                         });
-                    };
                 });
             });
         }
