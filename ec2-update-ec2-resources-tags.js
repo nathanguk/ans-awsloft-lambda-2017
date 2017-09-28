@@ -16,15 +16,27 @@ exports.handler = function (event, context, callback) {
             Resources: resources,
             Tags: tags
         };
-        ec2.createTags(tagparrams, function(err, data) {
-            if (err) {
-                console.log('Tag Error: ', err);
-                //context.fail('Tag Error: ', err );
-            } else {
-                //console.log(data);
-                return data
-            };
-        });    
+        if(ec2instance.Tags.Length > 0){
+            ec2.createTags(tagparrams, function(err, data) {
+                if (err) {
+                    console.log('Tag Error: ', err);
+                    context.fail('Tag Error: ', err );
+                } else {
+                    //console.log(data);
+                    return data
+                };
+            });
+        } else {
+            ec2.deleteTags(tagparrams, function(err, data) {
+                if (err) {
+                    console.log('Tag Error: ', err);
+                    context.fail('Tag Error: ', err );
+                } else {
+                    //console.log(data);
+                    return data
+                };
+            });
+        };        
     };
 
     // Get all EC2 Instance Reseravtions
@@ -46,7 +58,7 @@ exports.handler = function (event, context, callback) {
                     console.log(ec2instance.InstanceId);
 
                     // Get Instance Tags
-                    if(ec2instance.Tags){
+                    if(ec2instance.Tags.Length > 0){
                    
                         var ec2instanceTags = ec2instance.Tags;
                         
