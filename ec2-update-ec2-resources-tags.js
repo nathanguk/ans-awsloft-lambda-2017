@@ -12,7 +12,7 @@ exports.handler = function (event, context, callback) {
 
     // Function to apply tags to resources
     function applytags(tags,resources){
-        if(ec2instance.Tags.Length > 0){
+        if(tags.Length > 0){
             var tagparrams = {
                 Resources: resources,
                 Tags: tags
