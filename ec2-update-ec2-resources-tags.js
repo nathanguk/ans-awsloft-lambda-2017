@@ -11,13 +11,11 @@ exports.handler = function (event, context, callback) {
     var ec2 = new AWS.EC2({apiVersion: '2016-11-15',region: ec2region});
 
     // Function to apply tags to resources
-
+    function applytags(tags,resources){
         if(ec2instance.Tags.Length > 0){
-            function applytags(tags,resources){
-                var tagparrams = {
-                    Resources: resources,
-                    Tags: tags
-                };
+            var tagparrams = {
+                Resources: resources,
+                Tags: tags
             };
             ec2.createTags(tagparrams, function(err, data) {
                 if (err) {
@@ -29,10 +27,8 @@ exports.handler = function (event, context, callback) {
                 };
             });
         } else {
-            function applytags(tags,resources){
-                var tagparrams = {
-                    Resources: resources
-                };
+            var tagparrams = {
+                Resources: resources
             };
             ec2.deleteTags(tagparrams, function(err, data) {
                 if (err) {
