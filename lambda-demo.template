@@ -51,7 +51,7 @@
             "S3Bucket": "nathanguk",
             "S3Key": "ans-awsloft-lambda-2017/ec2-update-resources-tags.zip"
           },
-          "Runtime": "nodejs6.1",
+          "Runtime": "nodejs6.10",
           "Timeout": "30",
           "MemorySize" : "128",
           "TracingConfig": {
@@ -69,7 +69,7 @@
             "S3Bucket": "nathanguk",
             "S3Key": "ans-awsloft-lambda-2017/ec2-snapshots-retention-tags.zip"
           },
-          "Runtime": "nodejs6.1",
+          "Runtime": "nodejs6.10",
           "Timeout": "30",
           "MemorySize" : "128",
           "TracingConfig": {
