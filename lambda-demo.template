@@ -1,16 +1,17 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
   "Resources" : {
-    "ec2-lambda-execution-role": {
+    "ec2lambdaexecutionrole": {
       "Type": "AWS::IAM::Role",
       "Properties": {
+        "RoleName": "ec2_lambda_execution_role",
         "AssumeRolePolicyDocument": {
           "Version": "2012-10-17",
           "Statement": [{ "Effect": "Allow", "Principal": {"Service": ["lambda.amazonaws.com"]}, "Action": ["sts:AssumeRole"] }]
         },
         "Path": "/",
         "Policies": [{
-          "PolicyName": "ec2-lambda-execution-role-policy",
+          "PolicyName": "ec2_lambda_execution_role_policy",
           "PolicyDocument": {
             "Version": "2012-10-17",
               "Statement": [
@@ -40,11 +41,12 @@
         ]
       }
     },
-      "ec2-update-resources-tags": {
+      "ec2updateresourcestags": {
         "Type": "AWS::Lambda::Function",
         "Properties": {
+          "FunctionName": "ec2-update-resources-tags",
           "Handler": "index.handler",
-          "Role": { "Fn::GetAtt" : ["ec2-lambda-execution-role", "Arn"] },
+          "Role": { "Fn::GetAtt" : ["ec2lambdaexecutionrole", "Arn"] },
           "Code": {
             "S3Bucket": "nathanguk",
             "S3Key": "ans-awsloft-lambda-2017/ec2-update-resources-tags.zip"
@@ -57,11 +59,12 @@
         }
         }
     },
-        "ec2-snapshots-retention-tags": {
+        "ec2snapshotsretentiontags": {
         "Type": "AWS::Lambda::Function",
         "Properties": {
+          "FunctionName": "ec2-snapshots-retention-tags",
           "Handler": "index.handler",
-          "Role": { "Fn::GetAtt" : ["ec2-lambda-execution-role", "Arn"] },
+          "Role": { "Fn::GetAtt" : ["ec2lambdaexecutionrole", "Arn"] },
           "Code": {
             "S3Bucket": "nathanguk",
             "S3Key": "ans-awsloft-lambda-2017/ec2-snapshots-retention-tags.zip"
