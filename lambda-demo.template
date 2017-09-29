@@ -1,0 +1,78 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Resources" : {
+    "ec2-lambda-execution-role": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [{ "Effect": "Allow", "Principal": {"Service": ["lambda.amazonaws.com"]}, "Action": ["sts:AssumeRole"] }]
+        },
+        "Path": "/",
+        "Policies": [{
+          "PolicyName": "ec2-lambda-execution-role-policy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+              "Statement": [
+                  {
+                      "Action": "ec2:*",
+                      "Effect": "Allow",
+                      "Resource": "*"
+                  },
+                  {
+                      "Effect": "Allow",
+                      "Action": "elasticloadbalancing:*",
+                      "Resource": "*"
+                  },
+                  {
+                      "Effect": "Allow",
+                      "Action": "cloudwatch:*",
+                      "Resource": "*"
+                  },
+                  {
+                      "Effect": "Allow",
+                      "Action": "autoscaling:*",
+                      "Resource": "*"
+                  }
+              ]
+          }
+          }
+        ]
+      }
+    },
+      "ec2-update-resources-tags": {
+        "Type": "AWS::Lambda::Function",
+        "Properties": {
+          "Handler": "index.handler",
+          "Role": { "Fn::GetAtt" : ["ec2-lambda-execution-role", "Arn"] },
+          "Code": {
+            "S3Bucket": "nathanguk",
+            "S3Key": "ans-awsloft-lambda-2017/ec2-update-resources-tags.zip"
+          },
+          "Runtime": "nodejs6.1",
+          "Timeout": "30",
+          "MemorySize" : "128",
+          "TracingConfig": {
+            "Mode": "Active"
+        }
+        }
+    },
+        "ec2-snapshots-retention-tags": {
+        "Type": "AWS::Lambda::Function",
+        "Properties": {
+          "Handler": "index.handler",
+          "Role": { "Fn::GetAtt" : ["ec2-lambda-execution-role", "Arn"] },
+          "Code": {
+            "S3Bucket": "nathanguk",
+            "S3Key": "ans-awsloft-lambda-2017/ec2-snapshots-retention-tags.zip"
+          },
+          "Runtime": "nodejs6.1",
+          "Timeout": "30",
+          "MemorySize" : "128",
+          "TracingConfig": {
+            "Mode": "Active"
+        }
+        }
+    }
+  }
+}
