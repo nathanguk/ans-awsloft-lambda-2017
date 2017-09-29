@@ -9,7 +9,7 @@ This repository contains sample JavaScript Lambda functions used in the ANS - AW
 
 ## Follow instructions below to install and test this code
 
-** WARNING THIS CODE IS FOR DEMONSTRATION PURPOSES ONLY, PLEASE ENSURE THIS IS CODE IS ONLY RUN IN TEST ACCOUNT.
+** WARNING THIS CODE IS FOR DEMONSTRATION PURPOSES ONLY, PLEASE ENSURE THIS IS CODE IS ONLY RUN IN A TEST ACCOUNT.
 
 1) Create a Free AWS Account [here.](http://aws.amazon.com/free)
 2) Create one or more EC2 Instances.
